@@ -1,0 +1,22 @@
+{
+  "name": "okonkwocare-theme",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "npx @tailwindcss/cli -i ./assets/src/app.css -o ./assets/css/theme.css --watch",
+    "build": "npx @tailwindcss/cli -i ./assets/src/app.css -o ./assets/css/theme.css --minify"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.1.18",
+    "@tailwindcss/typography": "^0.5.19",
+    "tailwindcss": "^4.1.18"
+  },
+  "dependencies": {
+    "swiper": "^12.0.3"
+  }
+}

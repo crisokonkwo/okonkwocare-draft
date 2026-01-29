@@ -1,0 +1,28 @@
+# Ignore everything
+*
+
+# Except the .gitignore file itself
+!.gitignore
+
+# Allow wp-content directory
+!wp-content/
+
+# Ignore everything inside wp-content
+wp-content/*
+
+# Except the themes folder and its contents
+!wp-content/themes/
+!wp-content/themes/**
+
+# Large files - videos and archives
+*.mp4
+*.zip
+*.avi
+*.mov
+*.wmv
+*.flv
+*.rar
+*.tar.gz
+
+# Log files
+*.log
