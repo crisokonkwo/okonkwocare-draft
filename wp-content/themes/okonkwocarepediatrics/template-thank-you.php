@@ -8,6 +8,14 @@
 get_header('simple');
 ?>
 
+<?php
+// Allow Elementor or block editor content
+if (have_posts()) :
+    while (have_posts()) : the_post();
+        the_content();
+    endwhile;
+endif;
+?>
 
   <section class="bg-white">
     <div class="mx-auto max-w-3xl px-4 py-16 text-center">

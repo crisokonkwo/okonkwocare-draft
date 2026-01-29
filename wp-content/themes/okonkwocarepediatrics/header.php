@@ -318,7 +318,6 @@ $nav  = okc_nav();
         </div>
       </nav>
     </div>
-  </div>
-</header>
+</div>
 
 <main id="main" class="min-h-[60vh]">
