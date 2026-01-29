@@ -14,13 +14,8 @@ wp-content/*
 !wp-content/themes/
 !wp-content/themes/**
 
-# Large files - videos and archives
-*.mp4
+# Large files - archives only (videos handled by Git LFS)
 *.zip
-*.avi
-*.mov
-*.wmv
-*.flv
 *.rar
 *.tar.gz
 
