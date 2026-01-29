@@ -14,10 +14,9 @@ wp-content/*
 !wp-content/themes/
 !wp-content/themes/**
 
-# Large files - archives only (videos handled by Git LFS)
+# Large files 
 *.zip
 *.rar
 *.tar.gz
 
-# Log files
 *.log
