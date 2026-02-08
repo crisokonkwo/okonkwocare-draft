@@ -55,6 +55,17 @@ function okonkwocare_assets() {
     filemtime(get_theme_file_path('/assets/js/membership-adhd-slider.js')),
     true
   );
+
+  // Load blog-specific JavaScript on blog pages
+  if (is_page('blog') || is_home() || is_post_type_archive('post') || is_single()) {
+    wp_enqueue_script(
+      'okc-blog',
+      get_theme_file_uri('/assets/js/okc-blog.js'),
+      [],
+      filemtime(get_theme_file_path('/assets/js/okc-blog.js')),
+      true
+    );
+  }
 }
 add_action('wp_enqueue_scripts', 'okonkwocare_assets');
 
@@ -68,6 +79,7 @@ function okonkwocare_menus() {
 add_action('after_setup_theme', 'okonkwocare_menus');
 
 require_once get_theme_file_path('/inc/site-config.php');
+require_once get_theme_file_path('/inc/blog-shortcodes.php');
 
 function okc_current_url(): string {
   $scheme = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';

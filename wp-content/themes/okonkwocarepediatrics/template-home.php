@@ -10,164 +10,14 @@ get_header();
 $site = okc_site();
 ?>
 
-<section class="bg-linear-to-b from-slate-50 to-white">
-  <div class="mx-auto max-w-7xl px-4 py-10 md:py-10">
-    <div class="grid items-start gap-10 lg:grid-cols-2">
-      <div class="space-y-6">
-        <header class="text-center lg:text-center">
-          <p class="text-xs font-semibold uppercase tracking-wide text-brand-700">
-            Welcome to Okonkwo Care Pediatrics
-          </p>
-          <h1 class="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-            Trusted Holistic Integrative Pediatric Care in Miami, Florida
-          </h1>
-        </header>
-
-        <p class="text-base sm:text-md leading-7 text-slate-700">
-          Okonkwo Care Pediatrics is a concierge-style practice led by Dr. Margaret Okonkwo, offering personalized, unrushed visits that integrate evidence-based traditional pediatrics with holistic approach to support your child's physical, emotional, and social well-being. From comprehensive preventive care to specialized ADHD evaluations and management, we prioritize strong doctor-patient relationships to ensure every child receives tailored, compassionate care from infancy to young adulthood.
-        </p>
-
-        <h2 class="text-xl font-bold tracking-tight text-slate-900 sm:text-xl mb-2">
-          Two ways Okonkwo Care Pediatrics support your child's health
-        </h2>
-
-        <p class="mx-auto mt-2 max-w-xl text-sm leading-6 text-slate-600 lg:mx-0">
-          Our practice is built around two core offerings: a <span class="font-semibold text-slate-900">Holistic ADHD Program</span> and a <span class="font-semibold text-slate-900">Concierge Membership</span> for unrushed, relationship-based pediatric care. Thoughtfully designed care paths for families seeking deeper support and long-term partnership.
-        </p>
-
-        <ul class="space-y-3 text-sm sm:text-base text-slate-700">
-            <li class="flex items-start gap-3">
-            <span class="mt-1 flex h-5 w-5 flex-none items-center justify-center rounded-full bg-brand-50 ring-1 ring-brand-700/20">
-              <svg class="h-3 w-3 text-brand-700" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-              </svg>
-            </span>
-            <span>Personalized, unrushed visits focused on your child's unique needs</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <span class="mt-1 flex h-5 w-5 flex-none items-center justify-center rounded-full bg-brand-50 ring-1 ring-brand-700/20">
-              <svg class="h-3 w-3 text-brand-700" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-              </svg>
-            </span>
-            <!-- <span>Personalized, unrushed 60-90 minute visits focused on your child's unique needs</span> -->
-            <span>Holistic ADHD evaluations and root-cause integrative support </span>
-          </li>
-          <li class="flex items-start gap-3">
-            <span class="mt-1 flex h-5 w-5 flex-none items-center justify-center rounded-full bg-brand-50 ring-1 ring-brand-700/20">
-              <svg class="h-3 w-3 text-brand-700" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-              </svg>
-            </span>
-            <!-- <span>Direct access to Dr. Okonkwo via text, email, and phone - no insurance barriers</span> -->
-            <span>Concierge access for longer visits, continuity, and direct communication</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <span class="mt-1 flex h-5 w-5 flex-none items-center justify-center rounded-full bg-brand-50 ring-1 ring-brand-700/20">
-              <svg class="h-3 w-3 text-brand-700" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-              </svg>
-            </span>
-            <!-- <span>Integrative approach combining conventional pediatrics with holistic wellness</span> -->
-            <span>Whole-child care blending traditional and holistic pediatric approaches</span>
-          </li>
-
-        </ul>
-
-        <div class="text-xs text-slate-500">
-          Questions? Call <a class="text-brand-700 underline underline-offset-2" href="tel:<?php echo esc_attr($site['phoneTel']); ?>"><?php echo esc_html($site['phoneDisplay']); ?></a>
-        </div>
-      </div>
-
-      <div class="space-y-4">
-        <h2 class="text-xl font-semibold tracking-tight text-slate-900 text-center lg:text-left">
-          What makes our care different
-        </h2>
-
-        <div class="rounded-3xl border border-slate-200 bg-white p-4 shadow-soft">
-          <div class="overflow-hidden rounded-2xl bg-slate-100">
-            <img
-              src="<?php echo esc_url(get_theme_file_uri('/images/doctor-okonkwo.webp')); ?>"
-              alt="Dr. Margaret Okonkwo with patient"
-              class="w-full h-auto"
-              loading="eager"
-              decoding="async"
-            />
-          </div>
-
-          <div class="mt-4 grid gap-3 sm:grid-cols-3 lg:grid-cols-1">
-            <div class="rounded-2xl bg-slate-50 p-3">
-              <p class="text-xs font-semibold text-slate-900">20+ Years Experience</p>
-              <p class="mt-1 text-xs text-slate-600">Board-certified pediatrician.</p>
-            </div>
-            <div class="rounded-2xl bg-slate-50 p-3">
-              <p class="text-xs font-semibold text-slate-900">Unrushed Visits</p>
-              <p class="mt-1 text-xs text-slate-600">Time to listen, explain, and plan, direct access.</p>
-            </div>
-            <div class="rounded-2xl bg-slate-50 p-3">
-              <p class="text-xs font-semibold text-slate-900">Integrative Approach</p>
-              <p class="mt-1 text-xs text-slate-600">Traditional pediatrics + holistic options, whole-child wellness focus.</p>
-            </div>
-            <div class="rounded-2xl bg-slate-50 p-3">
-              <p class="text-xs font-semibold text-slate-900">Continuity</p>
-              <p class="mt-1 text-xs text-slate-600">Trusted long-term relationship, personalized care.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="mt-10 grid gap-6 md:grid-cols-2">
-      <div class="space-y-2">
-        <span class="inline-block rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-medium text-slate-700">Primary Care Model</span>
-        <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-soft">
-          <h3 class="text-xl font-bold text-slate-900">Concierge Membership</h3>
-          <p class="mt-2 text-sm text-slate-600">
-            Direct access to your pediatrician, unrushed visits, same-day communication, and continuity of care — without insurance barriers.
-          </p>
-          <a
-            href="<?php echo esc_url(home_url('/services/membership')); ?>"
-            class="mt-4 inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-900 hover:bg-slate-50"
-          >
-            Explore Membership
-            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-            </svg>
-          </a>
-        </div>
-      </div>
-
-      <div class="space-y-2">
-        <span class="inline-block rounded-full bg-brand-50 px-3 py-1 text-xs font-medium text-brand-800">Specialty Program</span>
-        <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-soft">
-          <h3 class="text-xl font-bold text-slate-900">Holistic ADHD Program</h3>
-          <p class="mt-2 text-sm text-slate-600">
-            A comprehensive, evidence-informed ADHD program that addresses root causes influenced by neurobiological, environmental, genetic, nutritional, and lifestyle factors.
-          </p>
-          <a
-            href="<?php echo esc_url(home_url('/services/adhd')); ?>"
-            class="mt-4 inline-flex items-center gap-2 rounded-xl bg-brand-700 px-4 py-2 text-sm font-semibold text-white hover:bg-brand-100"
-          >
-            Learn about the ADHD Program
-            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-            </svg>
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <p class="mt-4 text-xs text-slate-500">
-      Evidence-informed care. Personalized relationships. A whole-child approach.
-    </p>
-  </div>
-</section>
-
-<?php get_template_part('template-parts/credibility-strip'); ?>
-
-<?php get_template_part('template-parts/four-step-process'); ?>
-
-<?php get_template_part('template-parts/testimonials-section'); ?>
+<?php
+// Allow Elementor or block editor content
+if (have_posts()) :
+    while (have_posts()) : the_post();
+        the_content();
+    endwhile;
+endif;
+?>
 
 <?php
 // Featured Blog Posts Section
@@ -283,14 +133,5 @@ if ($featured_query->have_posts()) :
   </div>
 </section>
 <?php endif; ?>
-
-<?php
-// Allow Elementor or block editor content
-if (have_posts()) :
-    while (have_posts()) : the_post();
-        the_content();
-    endwhile;
-endif;
-?>
 
 <?php get_footer(); ?>

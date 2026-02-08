@@ -46,20 +46,18 @@ function okc_nav(): array {
     [ 'href' => $base, 'label' => 'Home' ],
 
     [
-      'href'          => $base . 'services/',
+      'href'          => $base . 'concierge-pediatrician-in-miami/',
       'label'         => 'Services',
       'overviewLabel' => 'Services Overview',
       'children'      => [
-        [ 'href' => $base . 'services/adhd/',       'label' => 'Holistic ADHD Program' ],
-        [ 'href' => $base . 'services/membership/', 'label' => 'Concierge Membership' ],
+        [ 'href' => $base . 'concierge-pediatrician-in-miami/adhd/',       'label' => 'Holistic ADHD Program' ],
+        [ 'href' => $base . 'concierge-pediatrician-in-miami/membership/', 'label' => 'Concierge Membership' ],
       ],
     ],
 
     [
       'href'          => $base . 'resources/',
       'label'         => 'Resources',
-      'overviewLabel' => 'Patient Resources',
-      'overviewHref'  => $base . 'resources/patient-resources/',
       'children'      => [
         [ 'href' => $base . 'resources/patient-resources/', 'label' => 'Patient Resources' ],
         [ 'href' => $base . 'resources/faq',               'label' => 'FAQs' ],

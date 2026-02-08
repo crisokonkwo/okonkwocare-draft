@@ -7,12 +7,6 @@
 get_header();
 ?>
 
-<?php get_template_part('template-parts/adhd-hero'); ?>
-<?php get_template_part('template-parts/adhd-intro-grid'); ?>
-<?php get_template_part('template-parts/adhd-comparison'); ?>
-<?php get_template_part('template-parts/adhd-program-approach'); ?>
-<?php get_template_part('template-parts/adhd-cta'); ?>
-
 <?php
 // Allow Elementor or block editor content
 if (have_posts()) :
