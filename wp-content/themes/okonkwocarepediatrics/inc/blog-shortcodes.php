@@ -142,6 +142,14 @@ function okc_render_post_card($post_id, $is_featured = false, $hidden = false) {
 }
 
 /**
+ * Get category ID to exclude from blog (social media posts)
+ */
+function okc_get_excluded_category_id() {
+  $cat = get_category_by_slug('social-media');
+  return $cat ? $cat->term_id : 0;
+}
+
+/**
  * [okc_blog_featured limit="10"]
  * Requires ACF or post meta: featured_post = 1 (string/number)
  */
@@ -150,7 +158,8 @@ function okc_blog_featured_shortcode($atts) {
     'limit' => 10,
   ], $atts, 'okc_blog_featured');
 
-  $q = new WP_Query([
+  $exclude_cat = okc_get_excluded_category_id();
+  $query_args = [
     'post_type'      => 'post',
     'post_status'    => 'publish',
     'posts_per_page' => (int) $atts['limit'],
@@ -163,7 +172,13 @@ function okc_blog_featured_shortcode($atts) {
         'compare' => '=',
       ],
     ],
-  ]);
+  ];
+  
+  if ($exclude_cat) {
+    $query_args['category__not_in'] = [$exclude_cat];
+  }
+
+  $q = new WP_Query($query_args);
 
   if (!$q->have_posts()) {
     return '<div class="mt-4 rounded-2xl border border-slate-200 bg-slate-50 p-6 text-sm text-slate-600">No featured posts yet.</div>';
@@ -194,13 +209,20 @@ function okc_blog_grid_shortcode($atts) {
   $limit = (int) $atts['limit'];
   $initial = max(1, (int) $atts['initial']);
 
-  $q = new WP_Query([
+  $exclude_cat = okc_get_excluded_category_id();
+  $query_args = [
     'post_type'      => 'post',
     'post_status'    => 'publish',
     'posts_per_page' => $limit,
     'orderby'        => 'date',
     'order'          => 'DESC',
-  ]);
+  ];
+  
+  if ($exclude_cat) {
+    $query_args['category__not_in'] = [$exclude_cat];
+  }
+
+  $q = new WP_Query($query_args);
 
   if (!$q->have_posts()) {
     return '<div class="mt-4 rounded-2xl border border-slate-200 bg-slate-50 p-6 text-sm text-slate-600">No posts found.</div>';
@@ -279,3 +301,85 @@ function okc_blog_category_chips_shortcode($atts) {
   return ob_get_clean();
 }
 add_shortcode('okc_blog_category_chips', 'okc_blog_category_chips_shortcode');
+
+/**
+ * Social Media Posts Gallery
+ * Usage: [okc_social_gallery count="5"]
+ */
+function okc_social_gallery_shortcode($atts) {
+  $atts = shortcode_atts([
+    'count' => 5,
+    'category' => 'social-media', // posts from this category
+  ], $atts, 'okc_social_gallery');
+  
+  $count = max(1, min(20, intval($atts['count'])));
+  
+  // Query posts from social media category
+  $args = [
+    'post_type' => 'post',
+    'posts_per_page' => $count,
+    'category_name' => sanitize_text_field($atts['category']),
+    'post_status' => 'publish',
+    'orderby' => 'date',
+    'order' => 'DESC',
+  ];
+  
+  $query = new WP_Query($args);
+  
+  ob_start();
+  ?>
+  <section class="bg-linear-to-b from-slate-150 to-white">
+    <div class="mx-auto max-w-7xl px-4 py-10">
+        <header class="text-center mb-10">
+            <h2 class="text-3xl font-bold uppercase tracking-tight text-slate-900 sm:text-4xl">Social Media Posts</h2>
+            <p class="text-sm text-center leading-5 text-slate-800">This is a gallery to showcase images from our recent social posts</p>
+        </header>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+        <?php
+        if ($query->have_posts()) :
+          while ($query->have_posts()) : $query->the_post();
+            $post_id = get_the_ID();
+            $url = get_permalink($post_id);
+            $title = get_the_title($post_id);
+            $img_url = get_the_post_thumbnail_url($post_id, 'medium');
+            
+            // Get social media link from custom field (optional)
+            $social_link = get_post_meta($post_id, 'social_media_link', true);
+            $final_link = !empty($social_link) ? esc_url($social_link) : $url;
+            $target = !empty($social_link) ? ' target="_blank" rel="noopener"' : '';
+            ?>
+            <a href="<?php echo $final_link; ?>"<?php echo $target; ?> 
+               class="social-post-card block rounded-lg overflow-hidden bg-slate-100 hover:opacity-90 transition-opacity aspect-square">
+              <?php if ($img_url) : ?>
+                <img src="<?php echo esc_url($img_url); ?>" 
+                     alt="<?php echo esc_attr($title); ?>"
+                     class="w-full h-full object-cover">
+              <?php else : ?>
+                <div class="w-full h-full flex items-center justify-center">
+                  <svg class="w-16 h-16 text-slate-300" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clip-rule="evenodd"/>
+                  </svg>
+                </div>
+              <?php endif; ?>
+            </a>
+            <?php
+          endwhile;
+          wp_reset_postdata();
+        else :
+          // Show placeholder images if no posts found
+          for ($i = 0; $i < $count; $i++) : ?>
+            <div class="social-post-card rounded-lg overflow-hidden bg-slate-100 aspect-square flex items-center justify-center">
+              <svg class="w-16 h-16 text-slate-300" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clip-rule="evenodd"/>
+              </svg>
+            </div>
+          <?php endfor;
+        endif;
+        ?>
+      </div>
+    </div>
+  </section>
+  <?php
+  return ob_get_clean();
+}
+add_shortcode('okc_social_gallery', 'okc_social_gallery_shortcode');

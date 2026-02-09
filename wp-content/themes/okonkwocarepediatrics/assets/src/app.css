@@ -1,5 +1,9 @@
-@import "tailwindcss" source("../..");
+﻿@import "tailwindcss" source("../..");
 @plugin "@tailwindcss/typography";
+
+/* Safelist grid column classes for dynamic content */
+@source "../**/*.{php,html,js}";
+
 @import "swiper/css";
 @import "swiper/css/pagination";
 /* @import "swiper/css/navigation"; */  /* Removed - using custom SVG buttons */
